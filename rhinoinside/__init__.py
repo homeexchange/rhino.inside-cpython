@@ -39,3 +39,10 @@ def load(rhino_dir=None):
         clr.AddReference("RhinoCommon")
         import Rhino
         __rhino_core = Rhino.Runtime.InProcess.RhinoCore()
+        
+        sysdir = RhinoInside.Resolver.RhinoSystemDirectory
+        plugdir = os.path.join(os.path.dirname(sysdir), "Plug-ins", "Grasshopper")
+
+        clr.AddReference(os.path.join(plugdir, "Grasshopper.dll"))
+        clr.AddReference(os.path.join(plugdir, "GH_IO.dll"))
+        clr.AddReference(os.path.join(plugdir, "GH_Util.dll"))
